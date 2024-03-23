@@ -1,0 +1,39 @@
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.5); /* 50% transparent white background */
+    padding: 20px 0; /* Increased padding for a bigger navbar */
+}
+
+nav .logo {
+    flex: 1;
+    text-align: center;
+    font-size: 32px; /* Increased font size for a larger logo */
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 20px; /* Increased spacing between links for a bigger navbar */
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #000; /* Black text color */
+    padding: 10px 20px; /* Increased padding for larger clickable area */
+    border-radius: 10px; /* Increased rounded corners */
+    font-size: 18px; /* Increased font size for better readability */
+}
+
+nav ul li a:hover,
+nav ul li a.active { /* Highlight on hover and active class */
+    background-color: #e0ffe0; /* Light green background */
+    color: #006400; /* Darker green text */
+}
