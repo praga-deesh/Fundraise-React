@@ -8,12 +8,9 @@ import NoPage from './components/NoPage';
 import Test from './components/Test';
 import Profile from './components/Profile';
 import Posts from './components/Posts';
-<<<<<<< HEAD
 import CreatePost from './components/CreatePost';
-=======
 import FundRaiserSignup from './components/FundRaiserSignup';
 import FundRaiserLogin from './components/FundRaiserLogin';
->>>>>>> 7ccffbc (Fundraiser Signup and Login added)
 
 function App() {
   return (
