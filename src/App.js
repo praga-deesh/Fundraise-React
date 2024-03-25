@@ -8,6 +8,7 @@ import NoPage from './components/NoPage';
 import Test from './components/Test';
 import Profile from './components/Profile';
 import Posts from './components/Posts';
+import CreatePost from './components/CreatePost';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route index element={<Home />} />
         <Route path="posts" element={<Posts/>} />
         <Route path="test" element={<Test/>} />
+        <Route path="create-post" element={<CreatePost/>} />
         <Route path="*" element={<NoPage />} />
       </Route>
     </Routes>
