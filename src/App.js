@@ -9,12 +9,17 @@ import Test from './components/Test';
 import Profile from './components/Profile';
 import Posts from './components/Posts';
 import CreatePost from './components/CreatePost';
+import FundRaiserSignup from './components/FundRaiserSignup';
+import FundRaiserLogin from './components/FundRaiserLogin';
 
 function App() {
   return (
+    
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Layout />}>
+      <Route path="signup" element={<FundRaiserSignup/>}/>
+      <Route path="login" element={<FundRaiserLogin/>}/>
       <Route path="profile" element={<Profile/>} />
         <Route index element={<Home />} />
         <Route path="posts" element={<Posts/>} />
@@ -24,6 +29,7 @@ function App() {
       </Route>
     </Routes>
   </BrowserRouter>
+
   );
 }
 
