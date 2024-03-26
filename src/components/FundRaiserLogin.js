@@ -22,8 +22,7 @@ function FundRaiserLogin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    setError(''); // Reset error message on new submission
-
+    setError(''); 
     try {
       const response = await fetch('http://localhost:8090/fundraiser/login', {
         method: 'POST',
@@ -34,8 +33,7 @@ function FundRaiserLogin() {
       });
 
       if (!response.ok) {
-        // If the server response is not ok, throw an error with the status
-        throw new Error(`Error: ${response.status}`);
+       throw new Error(`Error: ${response.status}`);
       }
 
       const data = await response.json();
@@ -45,14 +43,12 @@ function FundRaiserLogin() {
         email:data.email,
         role:"fundraiser"
       };
-      // Assuming the token is in data.token. Adjust as needed based on your API response
       sessionStorage.setItem("user", JSON.stringify(user));
       
       alert('Login successful!');
       
       navigate('/profile');
-      // Here, you can redirect the user or perform other actions upon successful login
-
+      
     } catch (error) {
       console.error('Login failed:', error);
       setError('Failed to login. Please check your username and password.');
