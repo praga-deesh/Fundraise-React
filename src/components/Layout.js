@@ -24,6 +24,12 @@ function Layout() {
           <li>
             <Link to="/login">FundRaiserLogin</Link>
           </li>
+          <li>
+            <Link to="/donor-login">Donor Login</Link>
+          </li>
+          <li>
+            <Link to="/donor-signup">Donor SignUp</Link>
+          </li>
         </ul>
       </nav>
 
