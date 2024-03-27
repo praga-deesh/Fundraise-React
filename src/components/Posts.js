@@ -165,7 +165,6 @@ const Posts = () => {
             <p><strong>Category:</strong> {post.category}</p>
             <p><strong>Start Date:</strong> {post.startDate}</p>
             <p><strong>End Date:</strong> {post.endDate}</p>
-            <p><strong>End Date:</strong> {post.endDate}</p>
             <p><strong>Amount Requested:</strong> {post.amountRequested}</p>
             <p><strong>Amount Collected:</strong> {post.amountCollected || '0'}</p>
             <div>
