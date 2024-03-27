@@ -14,6 +14,7 @@ import Profile from './components/Profile';
 import FundraiserProfile from './components/FundRaiserProfile';
 import DonorProfile from './components/DonorProfile';
 import MyPosts from './components/MyPosts';
+import Donate from './components/Donate';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="posts" element={<Posts/>} />
         <Route path="my-posts" element={<MyPosts/>}/>
         <Route path="create-post" element={<CreatePost/>} />
+        <Route path="donate" element={<Donate/>}/>
         <Route path="*" element={<NoPage />} />
       </Route>
     </Routes>
