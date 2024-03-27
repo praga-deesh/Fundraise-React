@@ -26,7 +26,7 @@ class PostService {
     return axiosInstance.get(API_URL+'post/fundraiser/'+id);
   }
   deletePostById(id){
-    return axiosInstance.delete(API_URL+'post/'+id);
+    return axiosInstance.delete('http://localhost:8090/post/'+id);
   }
 }
 
