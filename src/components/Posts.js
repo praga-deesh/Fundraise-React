@@ -135,7 +135,7 @@ const Posts = () => {
             )}
         </div>
                   {post.status === 'incomplete' && <button className='button-group'>Donate</button>}
-                  <button className='button-group'>View Donation Details</button>
+                  <button onClick={() => handleViewDonationClick(post)} className='button-group'>View Donation Details</button>
                 </div>
               ))}
             </div>
