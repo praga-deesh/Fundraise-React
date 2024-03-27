@@ -1,0 +1,26 @@
+
+  
+.details-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.post-grid-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-grid {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 10px; 
+}
+
+.post-box {
+  width: 55%; 
+  margin-right: 10px; 
+  border: 2px solid green;
+}
