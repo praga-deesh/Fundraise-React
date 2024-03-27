@@ -2,11 +2,14 @@ import React, { useState,useEffect } from 'react';
 import PostService from '../services/PostService';
 import './Post.css';
 import MyPosts from './MyPosts';
+import { useNavigate } from 'react-router-dom';
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
   const postService = new PostService();
   const userString = sessionStorage.getItem('user');
+
+  const navigate = useNavigate();
     
 
   const getPosts = async () => {
@@ -57,6 +60,16 @@ const Posts = () => {
   useEffect(() => {
     getPosts();
   }, []);
+
+  const redirectToDonorLogin = async () => {
+    navigate('/donor-login');
+    
+  };
+
+  const handleDonate = (post) => {
+    sessionStorage.setItem("post", JSON.stringify(post));
+    navigate('/donate');
+  };
 
 
   if(userString)
@@ -113,7 +126,7 @@ const Posts = () => {
                 </p>
             )}
         </div>
-                  {post.status === 'incomplete' && <button className='button-group'>Donate</button>}
+                  {post.status === 'incomplete' && <button className='button-group' onClick={() => handleDonate(post)}>Donate</button>}
                   <button className='button-group'>View Donation Details</button>
                 </div>
               ))}
@@ -169,7 +182,7 @@ const Posts = () => {
                 </p>
             )}
         </div>
-            {post.status === 'incomplete' && <button className='button-group'>Donate</button>}
+            {post.status === 'incomplete' && <button className='button-group' onClick={redirectToDonorLogin} >Donate</button>}
             <button className='button-group'>View Donation Details</button>
           </div>
         ))}

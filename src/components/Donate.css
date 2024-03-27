@@ -1,0 +1,23 @@
+.my-container {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .my-form {
+    margin-top: 20px;
+  }
+  
+  .my-form .form-control {
+    border-radius: 5px;
+  }
+  
+  .my-form .btn {
+    border-radius: 5px;
+    background-color: #28a745; 
+    color: white; 
+    display: block; 
+    margin: 0 auto; 
+  }
