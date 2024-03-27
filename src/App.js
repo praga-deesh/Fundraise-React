@@ -1,6 +1,7 @@
-
-import './App.css';
+import "./App.css";
+import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Home from './components/home';
 import Layout from './components/Layout';
 import NoPage from './components/NoPage';
@@ -17,12 +18,13 @@ import MyPosts from './components/MyPosts';
 import Donate from './components/Donate';
 import ViewDonations from './components/ViewDonations';
 
+
+
 function App() {
   return (
-    
     <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Layout />}>
+    <Route path="/" element={<Layout />}>
       <Route path="fundraiser-signup" element={<FundRaiserSignup/>}/>
       <Route path="fundraiser-login" element={<FundRaiserLogin/>}/>
       
@@ -38,8 +40,8 @@ function App() {
         <Route path="my-posts" element={<MyPosts/>}/>
         <Route path="create-post" element={<CreatePost/>} />
         <Route path="donate" element={<Donate/>}/>
-        <Route path="*" element={<NoPage />} />
         <Route path="view-donations" element={<ViewDonations/>}/>
+        <Route path="*" element={<NoPage />} />
 
         
       </Route>

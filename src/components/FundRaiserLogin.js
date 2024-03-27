@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
 import { useNavigate } from 'react-router-dom';
 
 function FundRaiserLogin() {
@@ -56,35 +57,52 @@ function FundRaiserLogin() {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
+    <div class="container">
+      {error && <p class="text-danger">{error}</p>}
+      <form onSubmit={handleSubmit} class="form-group">
+        <h2>FundRaiser Login</h2>
+
+        <label htmlFor="email" class="col-form-label-lg">
+          Email:
+        </label>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={credentials.email}
+          onChange={handleChange}
+          class="form-control"
+        />
+        <br></br>
+
+        <label htmlFor="password" class="col-form-label-lg">
+          Password:
+        </label>
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={credentials.password}
+          onChange={handleChange}
+          class="form-control"
+        />
+        <br></br>
+
         <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            id="email"
-            type="text"
-            name="email"
-            value={credentials.email}
-            onChange={handleChange}
-            required
-          />
+          <button type="submit" class="btn btn-success">
+            Login
+          </button>
         </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            id="password"
-            type="password"
-            name="password"
-            value={credentials.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit">Login</button>
+
+        <br></br>
+            <div class="px-2" onClick={() => navigate('/signup')}>
+                <label class="col-form-label-lg px-2">New User?</label>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </div>
       </form>
+      <div id="donorLogin" onClick={() => navigate('/donor-login')}>
+        <button type="submit" class="btn btn-secondary">Donor Login</button>
+      </div>
     </div>
   );
 }
