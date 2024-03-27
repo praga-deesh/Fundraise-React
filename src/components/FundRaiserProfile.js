@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './FundRiaserProfile.css';
+import './FundRaiserProfile.css'
+
 function FundraiserProfile() {
   const [user, setUser] = useState({
     id: '', 

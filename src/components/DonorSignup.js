@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import './DonorSignup.css';
+
 
 function DonorSignUp() {
   const [formData, setFormData] = useState({
@@ -45,34 +47,39 @@ function DonorSignUp() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div class="container">
+    <form onSubmit={handleSubmit} class="form-group">
     <h2> Donor Registration</h2>
-    <label htmlFor="name">Name:</label>
+    <label htmlFor="name" class="col-form-label-lg">Name:</label>
       <input
         type="text"
         name="name"
         placeholder="Name"
         value={formData.name}
         onChange={handleChange}
+        class="form-control"
       /><br></br>
-      <label htmlFor="email">Email:</label>
+      <label htmlFor="email" class="col-form-label-lg">Email:</label>
       <input
         type="email"
         name="email"
         placeholder="Email"
         value={formData.email}
         onChange={handleChange}
+        class="form-control"
       /><br></br>
-      <label htmlFor="password">Password:</label>
+      <label htmlFor="password" class="col-form-label-lg">Password:</label>
       <input
         type="password"
         name="password"
         placeholder="Password"
         value={formData.password}
         onChange={handleChange}
+        class="form-control"
       /><br></br>
-      <button type="submit">Sign Up</button>
+      <button type="submit" class="btn btn-success">Sign Up</button>
     </form>
+    </div>
   );
 }
 export default DonorSignUp; 

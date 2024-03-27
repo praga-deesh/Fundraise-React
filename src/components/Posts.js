@@ -11,8 +11,16 @@ const Posts = () => {
   const [posts, setPosts] = useState([]);
   const postService = new PostService();
   const userString = sessionStorage.getItem('user');
-
   const navigate = useNavigate();
+
+  const handleViewDonationClick = (post) => {
+    console.log('handlePostClick called');
+    sessionStorage.setItem('post', JSON.stringify(post));
+    console.log(post);
+    navigate('/view-donations');
+  };
+
+  
     
 
   const getPosts = async () => {
@@ -129,8 +137,8 @@ const Posts = () => {
                 </p>
             )}
         </div>
-                  {post.status === 'incomplete' && <button className='button-group' onClick={() => handleDonate(post)}>Donate</button>}
-                  <button className='button-group'>View Donation Details</button>
+                  {post.status === 'incomplete' && <button className='button-group'>Donate</button>}
+                  <button onClick={() => handleViewDonationClick(post)} className='button-group'>View Donation Details</button>
                 </div>
               ))}
             </div>
@@ -185,8 +193,11 @@ const Posts = () => {
                 </p>
             )}
         </div>
-            {post.status === 'incomplete' && <button className='button-group' onClick={redirectToDonorLogin} >Donate</button>}
-            <button className='button-group'>View Donation Details</button>
+            {post.status === 'incomplete' && <button className='button-group'>Donate</button>}
+           
+            <button onClick={() => handleViewDonationClick(post)} className='button-group'>View Donation Details</button>
+            
+            
           </div>
         ))}
       </div>
