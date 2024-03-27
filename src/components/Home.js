@@ -28,7 +28,7 @@ function Home() {
           className={`slide ${index === currentImage ? 'active' : ''}`}
           style={{ backgroundImage: `url(${img})` }}
         >
-          {index === currentImage && <div className="welcome-text">Welcome to Funraise App</div>}
+          {index === currentImage && <div className="welcome-text">Welcome to Fundraise App</div>}
         </div>
       ))}
     </div>

@@ -48,7 +48,7 @@ const Post = () => {
       const { data } = await postService.getIncompletePosts();
       setPosts(data);
     } catch (error) {
-      console.error('Error fetching incompleted posts:', error);
+      console.error('Error fetching incomplete posts:', error);
     }
   };
 

@@ -1,4 +1,4 @@
-import axios from 'axios';
+
 import { axiosInstance } from "./axios-http-client";
 
 const API_URL = 'http://localhost:8090/';
