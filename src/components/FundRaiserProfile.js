@@ -125,7 +125,7 @@ function FundraiserProfile() {
 
   return (
     <div>
-      <h1>Profile</h1><hr/>
+      <h1> Fundraiser Profile</h1><hr/>
       <h2>name : {user.name}</h2>
       <h2>email : {user.email}</h2>
       <h2>role : {user.role}</h2> <hr/>

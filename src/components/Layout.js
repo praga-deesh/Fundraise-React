@@ -16,7 +16,7 @@ function Layout() {
             <Link to="/posts">Posts</Link>
           </li>
           <li>
-            <Link to="/test">Test</Link>
+            <Link to="/fundraiser-SIGNUPn">FundRaiserSignup</Link>
           </li>
          
           <li>

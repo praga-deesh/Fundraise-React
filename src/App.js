@@ -17,22 +17,21 @@ import DonorProfile from "./components/DonorProfile";
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />} />
-        <Route path="signup" element={<FundRaiserSignup/>}/>
-        <Route path="login" element={<FundRaiserLogin/>}/>
-        <Route path="profile" element={<FundraiserProfile/>} />
-        <Route path="donor-profile" element={<DonorProfile/>} />
-        <Route path="donor-signup" element={<DonorSignup />} />
+    <Routes>
+      <Route path="/" element={<Layout />}>
+      <Route path="signup" element={<FundRaiserSignup/>}/>
+      <Route path="login" element={<FundRaiserLogin/>}/>
+      <Route path="profile" element={<FundraiserProfile/>} />
+      <Route path="donor-login" element={<DonorLogin/>}/>
+      <Route path="donor-signup" element={<DonorSignup/>}/>
+        <Route index element={<Home />} />
+        <Route path="posts" element={<Posts/>} />
+        <Route path="create-post" element={<CreatePost/>} />
+        <Route path="*" element={<NoPage />} />
+      </Route>
+    </Routes>
+  </BrowserRouter>
 
-        <Route path="donor-login" element={<DonorLogin />}>
-          <Route index element={<Home />} />
-          <Route path="posts" element={<Posts />} />
-          <Route path="create-post" element={<CreatePost />} />
-          <Route path="*" element={<NoPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
   );
 }
 
