@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState,useEffect } from 'react';
 import PostService from '../services/PostService';
 import './Post.css';
+import MyPosts from './MyPosts';
 
-const Post = () => {
+const Posts = () => {
   const [posts, setPosts] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('');
   const postService = new PostService();
+  const userString = sessionStorage.getItem('user');
+    
 
   const getPosts = async () => {
     try {
@@ -56,31 +58,88 @@ const Post = () => {
     getPosts();
   }, []);
 
-  const onCategorySelected = (category) => {
-    setSelectedCategory(category);
-    if (category) {
-      getPostsByCategory(category); 
-    } else {
-      getPosts();
-    }
-  };
 
+  if(userString)
+  {
+      const user = JSON.parse(userString);
+      if(user.role === 'fundraiser')
+      {
+          return <MyPosts />
+      }
+      else
+      {
+        return (
+          <div className="post-container" style={{height: "90vh",overflow:"scroll"}}>
+            <div className="button-container">
+              <button className="filter-button" onClick={getPosts}>All Posts</button>
+              <button className="filter-button" onClick={getPostsSortedByDate}>Recent Posts</button>
+              <button className="filter-button" onClick={getIncompletePosts}>Donatable Posts</button>
+              <button className="filter-button" onClick={getCompletedPosts}>Completed Donations</button>
+              <select className="form-select" name="Categories" onChange={(e) => getPostsByCategory(e.target.value)}>
+                <option value="allcategory">All Categories</option>
+                <option value="education">Education</option>
+                <option value="food">Food</option>
+                <option value="medical">Medical</option>
+              </select>
+            </div>
+      
+            <div className="post-grid">
+              {posts.map((post) => (
+                <div className="post-box" key={post.id || post._id}>
+                  <img
+                    src={
+                      post.category === 'food' ? 'assets/images/food.jpg' :
+                      post.category === 'medical' ? 'assets/images/medical.jpg' :
+                      post.category === 'education' ? 'assets/images/education2.png' :
+                      ''
+                    }
+                    alt={post.category + ' Donation'}
+                  />
+                  <h4>{post.title}</h4>
+                  <p><strong>Category:</strong> {post.category}</p>
+                  <p><strong>Start Date:</strong> {post.startDate}</p>
+                  <p><strong>End Date:</strong> {post.endDate}</p>
+                  <p><strong>Amount Requested:</strong> {post.amountRequested}</p>
+                  <p><strong>Amount Collected:</strong> {post.amountCollected || '0'}</p>
+                  <div>
+            {post.status === 'incomplete' && (
+                <p style={{ color: 'red', outline: '2px solid red', padding: '2px' }}>
+                    <strong>Status:</strong> {post.status}
+                </p>
+            )}
+            {post.status === 'completed' && (
+                <p style={{ color: 'green', outline: '2px solid green', padding: '2px' }}>
+                    <strong>Status:</strong> {post.status}
+                </p>
+            )}
+        </div>
+                  {post.status === 'incomplete' && <button className='button-group'>Donate</button>}
+                  <button className='button-group'>View Donation Details</button>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      }
+    }
+    else
+    {
   return (
-    <div className="post-container">
+    <div className="post-container" style={{height: "90vh",overflow:"scroll"}}>
       <div className="button-container">
         <button className="filter-button" onClick={getPosts}>All Posts</button>
         <button className="filter-button" onClick={getPostsSortedByDate}>Recent Posts</button>
         <button className="filter-button" onClick={getIncompletePosts}>Donatable Posts</button>
         <button className="filter-button" onClick={getCompletedPosts}>Completed Donations</button>
         <select className="form-select" name="Categories" onChange={(e) => getPostsByCategory(e.target.value)}>
-          <option value="">All Categories</option>
+          <option value="allcategory">All Categories</option>
           <option value="education">Education</option>
           <option value="food">Food</option>
           <option value="medical">Medical</option>
         </select>
       </div>
 
-      <div className="post-grid">
+      <div className="post-grid" >
         {posts.map((post) => (
           <div className="post-box" key={post.id || post._id}>
             <img
@@ -98,7 +157,18 @@ const Post = () => {
             <p><strong>End Date:</strong> {post.endDate}</p>
             <p><strong>Amount Requested:</strong> {post.amountRequested}</p>
             <p><strong>Amount Collected:</strong> {post.amountCollected || '0'}</p>
-            <p><strong>Status:</strong> {post.status}</p>
+            <div>
+            {post.status === 'incomplete' && (
+                <p style={{ color: 'red', outline: '2px solid red', padding: '2px' }}>
+                    <strong>Status:</strong> {post.status}
+                </p>
+            )}
+            {post.status === 'completed' && (
+                <p style={{ color: 'green', outline: '2px solid green', padding: '2px' }}>
+                    <strong>Status:</strong> {post.status}
+                </p>
+            )}
+        </div>
             {post.status === 'incomplete' && <button className='button-group'>Donate</button>}
             <button className='button-group'>View Donation Details</button>
           </div>
@@ -107,5 +177,6 @@ const Post = () => {
     </div>
   );
 };
+}
 
-export default Post;
+export default Posts;
