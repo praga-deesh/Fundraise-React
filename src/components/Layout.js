@@ -16,10 +16,6 @@ function Layout() {
             <Link to="/posts">Posts</Link>
           </li>
           <li>
-            <Link to="/fundraiser-SIGNUPn">FundRaiserSignup</Link>
-          </li>
-         
-          <li>
             <Link to="/donor-login">Login</Link>
           </li>
           
