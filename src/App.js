@@ -1,18 +1,19 @@
 
 import './App.css';
-import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from './components/home';
 import Layout from './components/Layout';
 import NoPage from './components/NoPage';
-import Test from './components/Test';
 import Posts from './components/Posts';
 import CreatePost from './components/CreatePost';
 import FundRaiserSignup from './components/FundRaiserSignup';
 import FundRaiserLogin from './components/FundRaiserLogin';
-import FundraiserProfile from './components/FundRaiserProfile';
 import DonorSignup from './components/DonorSignup';
 import DonorLogin from './components/DonorLogin';
+import Profile from './components/Profile';
+import FundraiserProfile from './components/FundRaiserProfile';
+import DonorProfile from './components/DonorProfile';
+import MyPosts from './components/MyPosts';
 
 function App() {
   return (
@@ -22,11 +23,17 @@ function App() {
       <Route path="/" element={<Layout />}>
       <Route path="signup" element={<FundRaiserSignup/>}/>
       <Route path="login" element={<FundRaiserLogin/>}/>
-      <Route path="profile" element={<FundraiserProfile/>} />
+      
       <Route path="donor-login" element={<DonorLogin/>}/>
       <Route path="donor-signup" element={<DonorSignup/>}/>
+
+      <Route path="profile" element={<Profile/>} />
+      <Route path="fundraiser-profile" element={<FundraiserProfile/>} />
+      <Route path="donor-profile" element={<DonorProfile/>} />
+
         <Route index element={<Home />} />
         <Route path="posts" element={<Posts/>} />
+        <Route path="my-posts" element={<MyPosts/>}/>
         <Route path="create-post" element={<CreatePost/>} />
         <Route path="*" element={<NoPage />} />
       </Route>
