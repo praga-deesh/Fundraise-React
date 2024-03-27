@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './FundRaiserProfile.css'
 
 function FundraiserProfile() {
   const [user, setUser] = useState({
@@ -75,7 +76,7 @@ function FundraiserProfile() {
         headers: { // 1
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ // 2
+          body: JSON.stringify({ 
             password: user.newPassword, 
           }),
       });
@@ -125,11 +126,12 @@ function FundraiserProfile() {
 
   return (
     <div>
-      <h1> Fundraiser Profile</h1><hr/>
-      <h2>name : {user.name}</h2>
-      <h2>email : {user.email}</h2>
-      <h2>role : {user.role}</h2> <hr/>
-
+      <h1 className='Heading'>Fundraiser Profile</h1><hr/>
+      <div className='detail'> 
+      <h2>Name :{user.name}</h2>
+      <h2>Email ID: {user.email}</h2>
+     
+      </div>
       <form onSubmit={handleUpdateName}>
         <label>
           Username:
@@ -155,9 +157,12 @@ function FundraiserProfile() {
         </label>
         
         <button type="submit">Update password</button>
+        
       </form>
-      <button onClick={handleDeleteAccount}>Delete Account</button>
-      <button onClick={handleLogout}>Logout</button>
+      <div className='button-container'>
+      <button onClick={handleDeleteAccount} className='delete-account'>Delete Account</button>
+      <button onClick={handleLogout} className='logbutton'>Logout</button>
+      </div>
     </div>
   );
 }

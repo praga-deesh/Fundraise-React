@@ -50,6 +50,20 @@ function Donate() {
       })
       useEffect(() => {
 
+        const sessionData = {
+          id : 2,
+          name: 'DonorOne',
+          email: 'd1@g.com',
+          role: 'donor',
+          password: 'd1d1d1',
+          accountId:'donor1@upi',
+          accountBalance:38000.0
+      };
+      const dataString = JSON.stringify(sessionData);
+
+  // Add data to sessionStorage
+  sessionStorage.setItem('user', dataString);
+
         const userData = JSON.parse(sessionStorage.getItem('user'));
       
         if (userData) {
@@ -82,34 +96,27 @@ function Donate() {
       
           })
       }
-
-           const sessionData = {
-            id : 2,
-            name: 'DonorOne',
-            email: 'd1@g.com',
-            role: 'donor',
-            password: 'd1d1d1',
-            accountId:'donor1@upi',
-            accountBalance:38000.0
-        };
-        const dataString = JSON.stringify(sessionData);
-
-    // Add data to sessionStorage
-    sessionStorage.setItem('user', dataString);
-
-
-    setTransaction( {
-        senderId: user.accountId ,
-        receiverId: post.donationAccountId
-    })
-
-    setCommentt( {
-        donorId: user.id ,
-        postId: post.id
-    })
       
       }, []);
 
+      useEffect(() => {
+        if (user.accountId && post.donationAccountId) {
+          setTransaction({
+            senderId: user.accountId,
+            receiverId: post.donationAccountId
+          });
+        }
+      }, [user, post]); // This useEffect depends on user and post states
+      
+      // Similar for comment
+      useEffect(() => {
+        if (user.id && post.id) {
+          setCommentt({
+            donorId: user.id,
+            postId: post.id
+          });
+        }
+      }, [user, post]); // This useEffect also depends on user and post states
   
 
       const handleChangeDonation = (e) => {

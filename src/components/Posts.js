@@ -3,6 +3,9 @@ import PostService from '../services/PostService';
 import './Post.css';
 import MyPosts from './MyPosts';
 import { useNavigate } from 'react-router-dom';
+import foodImage from '../resources/food.jpg';
+import medicalImage from '../resources/medical.jpg';
+import educationImage from '../resources/education2.png';
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
@@ -61,6 +64,14 @@ const Posts = () => {
     getPosts();
   }, []);
 
+  const handleViewDonationClick = (post) => {
+    console.log('handlePostClick called');
+    sessionStorage.setItem('post', JSON.stringify(post));
+    console.log(post);
+    navigate('/view-donations');
+  };
+
+
   const redirectToDonorLogin = async () => {
     navigate('/donor-login');
     
@@ -99,15 +110,15 @@ const Posts = () => {
             <div className="post-grid">
               {posts.map((post) => (
                 <div className="post-box" key={post.id || post._id}>
-                  <img
-                    src={
-                      post.category === 'food' ? 'assets/images/food.jpg' :
-                      post.category === 'medical' ? 'assets/images/medical.jpg' :
-                      post.category === 'education' ? 'assets/images/education2.png' :
-                      ''
-                    }
-                    alt={post.category + ' Donation'}
-                  />
+        <img
+          src={
+            post.category === 'food' ? foodImage :
+            post.category === 'medical' ? medicalImage :
+            post.category === 'education' ? educationImage :
+            ''
+          }
+          alt={post.category + ' Donation'}
+        />
                   <h4>{post.title}</h4>
                   <p><strong>Category:</strong> {post.category}</p>
                   <p><strong>Start Date:</strong> {post.startDate}</p>
@@ -127,7 +138,7 @@ const Posts = () => {
             )}
         </div>
                   {post.status === 'incomplete' && <button className='button-group' onClick={() => handleDonate(post)}>Donate</button>}
-                  <button className='button-group'>View Donation Details</button>
+                  <button className='button-group' onClick={() => handleViewDonationClick(post)}>View Donation Details</button>
                 </div>
               ))}
             </div>
@@ -155,15 +166,15 @@ const Posts = () => {
       <div className="post-grid" >
         {posts.map((post) => (
           <div className="post-box" key={post.id || post._id}>
-            <img
-              src={
-                post.category === 'food' ? 'assets/images/food.jpg' :
-                post.category === 'medical' ? 'assets/images/medical.jpg' :
-                post.category === 'education' ? 'assets/images/education2.png' :
-                ''
-              }
-              alt={post.category + ' Donation'}
-            />
+        <img
+          src={
+            post.category === 'food' ? foodImage :
+            post.category === 'medical' ? medicalImage :
+            post.category === 'education' ? educationImage :
+            ''
+          }
+          alt={post.category + ' Donation'}
+        />
             <h4>{post.title}</h4>
             <p><strong>Category:</strong> {post.category}</p>
             <p><strong>Start Date:</strong> {post.startDate}</p>
@@ -183,7 +194,7 @@ const Posts = () => {
             )}
         </div>
             {post.status === 'incomplete' && <button className='button-group' onClick={redirectToDonorLogin} >Donate</button>}
-            <button className='button-group'>View Donation Details</button>
+            <button className='button-group' onClick={() => handleViewDonationClick(post)}>View Donation Details</button>
           </div>
         ))}
       </div>
