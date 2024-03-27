@@ -2,7 +2,7 @@
 import './App.css';
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from './components/Home';
+import Home from './components/home';
 import Layout from './components/Layout';
 import NoPage from './components/NoPage';
 import Test from './components/Test';
@@ -11,6 +11,8 @@ import CreatePost from './components/CreatePost';
 import FundRaiserSignup from './components/FundRaiserSignup';
 import FundRaiserLogin from './components/FundRaiserLogin';
 import FundraiserProfile from './components/FundRaiserProfile';
+import DonorSignup from './components/DonorSignup';
+import DonorLogin from './components/DonorLogin';
 
 function App() {
   return (
@@ -21,10 +23,11 @@ function App() {
       <Route path="signup" element={<FundRaiserSignup/>}/>
       <Route path="login" element={<FundRaiserLogin/>}/>
       <Route path="profile" element={<FundraiserProfile/>} />
+      <Route path="donor-login" element={<DonorLogin/>}/>
+      <Route path="donor-signup" element={<DonorSignup/>}/>
         <Route index element={<Home />} />
         <Route path="posts" element={<Posts/>} />
-        <Route path="test" element={<Test/>} />
-        {/* <Route path="create-post" element={<CreatePost/>} /> */}
+        <Route path="create-post" element={<CreatePost/>} />
         <Route path="*" element={<NoPage />} />
       </Route>
     </Routes>
