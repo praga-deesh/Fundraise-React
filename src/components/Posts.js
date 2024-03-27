@@ -2,11 +2,20 @@ import React, { useState,useEffect } from 'react';
 import PostService from '../services/PostService';
 import './Post.css';
 import MyPosts from './MyPosts';
+import { useNavigate } from 'react-router-dom';
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
   const postService = new PostService();
   const userString = sessionStorage.getItem('user');
+  const navigate = useNavigate();
+
+  const handleViewDonationClick = (post) => {
+    console.log('handlePostClick called');
+    sessionStorage.setItem('post', JSON.stringify(post));
+    console.log(post);
+    navigate('/view-donations');
+  };
     
 
   const getPosts = async () => {
@@ -114,7 +123,8 @@ const Posts = () => {
             )}
         </div>
                   {post.status === 'incomplete' && <button className='button-group'>Donate</button>}
-                  <button className='button-group'>View Donation Details</button>
+                  
+                  <button onClick={() => handleViewDonationClick(post)} className='button-group'>View Donation Details</button>
                 </div>
               ))}
             </div>
@@ -155,6 +165,7 @@ const Posts = () => {
             <p><strong>Category:</strong> {post.category}</p>
             <p><strong>Start Date:</strong> {post.startDate}</p>
             <p><strong>End Date:</strong> {post.endDate}</p>
+            <p><strong>End Date:</strong> {post.endDate}</p>
             <p><strong>Amount Requested:</strong> {post.amountRequested}</p>
             <p><strong>Amount Collected:</strong> {post.amountCollected || '0'}</p>
             <div>
@@ -170,7 +181,10 @@ const Posts = () => {
             )}
         </div>
             {post.status === 'incomplete' && <button className='button-group'>Donate</button>}
-            <button className='button-group'>View Donation Details</button>
+           
+            <button onClick={() => handleViewDonationClick(post)} className='button-group'>View Donation Details</button>
+            
+            
           </div>
         ))}
       </div>
