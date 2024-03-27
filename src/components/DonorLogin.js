@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function DonorLogin() {
   const navigate = useNavigate();
   const [credentials, setCredentials] = useState({
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   });
-  const [error, setError] = useState('');
-
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,77 +17,90 @@ function DonorLogin() {
     });
   };
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setError(''); 
+    setError("");
 
     try {
-      const response = await fetch('http://localhost:8090/donor/login', {
-        method: 'POST',
+      const response = await fetch("http://localhost:8090/donor/login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(credentials),
       });
 
       if (!response.ok) {
-
         throw new Error(`Error: ${response.status}`);
       }
 
       const data = await response.json();
       let user = {
-        id:data.id,
-        name:data.name,
-        email:data.email,
-        role:"donor"
+        id: data.id,
+        name: data.name,
+        email: data.email,
+        role: "donor",
       };
 
       sessionStorage.setItem("user", JSON.stringify(user));
 
-      alert('Login successful!');
+      alert("Login successful!");
 
-      navigate('/profile');
-
-
+      navigate("/donor-profile");
     } catch (error) {
-      console.error('Login failed:', error);
-      setError('Failed to login. Please check your username and password.');
+      console.error("Login failed:", error);
+      setError("Failed to login. Please check your username and password.");
     }
   };
 
   return (
-    <div>
-      <h2>Donor Login</h2>
+    <div class="container">
+      {error && <p class="text-danger">{error}</p>}
+      <form onSubmit={handleSubmit} class="form-group">
+        <h2>Donor Login</h2>
 
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleSubmit}>
+        <label htmlFor="email" class="col-form-label-lg">
+          Email:
+        </label>
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={credentials.email}
+          onChange={handleChange}
+          class="form-control"
+        />
+        <br></br>
+
+        <label htmlFor="password" class="col-form-label-lg">
+          Password:
+        </label>
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={credentials.password}
+          onChange={handleChange}
+          class="form-control"
+        />
+        <br></br>
+
         <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            id="email"
-            type="text"
-            name="email"
-            value={credentials.email}
-            onChange={handleChange}
-            required
-          />
+          <button type="submit" class="btn btn-success">
+            Login
+          </button>
         </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            id="password"
-            type="password"
-            name="password"
-            value={credentials.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit">Donor Login</button>
+
+        <br></br>
+            <div class="px-2" onClick={() => navigate('/donor-signup')}>
+                <label class="col-form-label-lg px-2">New User?</label>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </div>
       </form>
+      <div id="fundraiserLogin" onClick={() => navigate('/login')}>
+        <button type="submit" class="btn btn-secondary">FundRaiserLogin</button>
+      </div>
     </div>
   );
 }

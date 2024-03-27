@@ -18,18 +18,11 @@ function Layout() {
           <li>
             <Link to="/test">Test</Link>
           </li>
+         
           <li>
-            <Link to="/signup">FundRaiserSignup</Link>
+            <Link to="/donor-login">Login</Link>
           </li>
-          <li>
-            <Link to="/login">FundRaiserLogin</Link>
-          </li>
-          <li>
-            <Link to="/donor-login">Donor Login</Link>
-          </li>
-          <li>
-            <Link to="/donor-signup">Donor SignUp</Link>
-          </li>
+          
         </ul>
       </nav>
 

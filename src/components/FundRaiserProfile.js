@@ -130,7 +130,7 @@ function FundraiserProfile() {
       <h2>email : {user.email}</h2>
       <h2>role : {user.role}</h2> <hr/>
 
-      <form onSubmit={handleUpdateName}>
+      {/* <form onSubmit={handleUpdateName}>
         <label>
           Username:
           <input
@@ -155,7 +155,7 @@ function FundraiserProfile() {
         </label>
         
         <button type="submit">Update password</button>
-      </form>
+      </form> */}
       <button onClick={handleDeleteAccount}>Delete Account</button>
       <button onClick={handleLogout}>Logout</button>
     </div>
