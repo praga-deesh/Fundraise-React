@@ -37,7 +37,7 @@ const MyPosts = () => {
         }
       };
   return (
-    <div className="post-grid" style={{height: "97.5vh",overflow:"scroll"}}>
+    <div className="post-grid">
       {posts.map(post => (
         <div key={post.id} className="post-box">
           {/* Render post details */}
