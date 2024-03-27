@@ -16,6 +16,8 @@ const Posts = () => {
     console.log(post);
     navigate('/view-donations');
   };
+
+  
     
 
   const getPosts = async () => {
@@ -66,6 +68,16 @@ const Posts = () => {
   useEffect(() => {
     getPosts();
   }, []);
+
+  const redirectToDonorLogin = async () => {
+    navigate('/donor-login');
+    
+  };
+
+  const handleDonate = (post) => {
+    sessionStorage.setItem("post", JSON.stringify(post));
+    navigate('/donate');
+  };
 
 
   if(userString)
@@ -123,8 +135,7 @@ const Posts = () => {
             )}
         </div>
                   {post.status === 'incomplete' && <button className='button-group'>Donate</button>}
-                  
-                  <button onClick={() => handleViewDonationClick(post)} className='button-group'>View Donation Details</button>
+                  <button className='button-group'>View Donation Details</button>
                 </div>
               ))}
             </div>

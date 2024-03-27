@@ -16,13 +16,10 @@ function Layout() {
             <Link to="/posts">Posts</Link>
           </li>
           <li>
-            <Link to="/test">Test</Link>
+            <Link to="/fundraiser-SIGNUPn">FundRaiserSignup</Link>
           </li>
           <li>
-            <Link to="/signup">FundRaiserSignup</Link>
-          </li>
-          <li>
-            <Link to="/login">FundRaiserLogin</Link>
+            <Link to="/fundraiser-login">FundRaiserLogin</Link>
           </li>
           <li>
             <Link to="/donor-login">Donor Login</Link>
