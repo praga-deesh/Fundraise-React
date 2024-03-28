@@ -52,6 +52,13 @@ const MyPosts = () => {
         navigate('/create-post');
       }
 
+      const handleViewDonationClick = (post) => {
+        console.log('handlePostClick called');
+        sessionStorage.setItem('post', JSON.stringify(post));
+        console.log(post);
+        navigate('/view-donations');
+      };
+
   return (
     <>
     <div className='first-div'>
@@ -90,7 +97,7 @@ const MyPosts = () => {
             )}
         </div>
           {post.status === 'incomplete' && <button className='button-group' onClick={()=>handleDelete(post.id)}>Delete</button>}
-          <button className='button-group'>View Donation Details</button>
+          <button className='button-group' onClick={() => handleViewDonationClick(post)} >View Donation Details</button>
           <button>Edit Post</button>
         </div>
       ))}

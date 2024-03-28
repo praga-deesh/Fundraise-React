@@ -57,7 +57,7 @@ function FundRaiserLogin() {
 
   return (
     <div>
-      <h2>Login</h2>
+      <center><h2>Fundraiser Login</h2></center>
       
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <form onSubmit={handleSubmit}>
@@ -65,8 +65,9 @@ function FundRaiserLogin() {
           <label htmlFor="email">Email:</label>
           <input
             id="email"
-            type="text"
+            type="email"
             name="email"
+            className='form-control'
             value={credentials.email}
             onChange={handleChange}
             required
@@ -78,11 +79,13 @@ function FundRaiserLogin() {
             id="password"
             type="password"
             name="password"
+            className='form-control'
             value={credentials.password}
             onChange={handleChange}
             required
           />
         </div>
+        <br></br>
         <button type="submit">Login</button>
       </form>
     </div>

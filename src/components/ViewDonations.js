@@ -12,11 +12,19 @@ const ViewDonations = () => {
   useEffect(() => {
     if (postId) {
       ViewDonationsService.viewDonations(postId)
-        .then(response => setDonations(response.data))
+        .then(response => {
+          console.log(postId);
+          console.log(response);
+          setDonations(response.data)
+        })
         .catch(error => setErrorMessage('No donations to Show'));
 
       ViewDonationsService.viewComments(postId)
-        .then(response => setComments(response.data))
+        .then(response => {
+          console.log(postId);
+          console.log(response);
+          setComments(response.data)
+        })
         .catch(error => setErrorMessage('No Comments to Show'));
     }
   }, [postId]);

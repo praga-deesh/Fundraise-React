@@ -61,7 +61,7 @@ function DonorLogin() {
 
   return (
     <div>
-      <h2>Donor Login</h2>
+     <center> <h2>Donor Login</h2> </center>
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <form onSubmit={handleSubmit}>
@@ -69,8 +69,9 @@ function DonorLogin() {
           <label htmlFor="email">Email:</label>
           <input
             id="email"
-            type="text"
+            type="email"
             name="email"
+            className='form-control'
             value={credentials.email}
             onChange={handleChange}
             required
@@ -82,11 +83,13 @@ function DonorLogin() {
             id="password"
             type="password"
             name="password"
+            className='form-control'
             value={credentials.password}
             onChange={handleChange}
             required
           />
         </div>
+        <br></br>
         <button type="submit">Donor Login</button>
       </form>
     </div>

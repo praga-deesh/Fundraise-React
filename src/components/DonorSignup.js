@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function DonorSignUp() {
+  const navigate = new useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -39,6 +41,8 @@ function DonorSignUp() {
 
       const responseData = await response.json();
       console.log('Signup success:', responseData);
+      navigate('/donor-login')
+      alert(" donor registration Successfull!")
     } catch (error) {
       console.error('Signup error:', error);
     }
@@ -52,6 +56,7 @@ function DonorSignUp() {
         type="text"
         name="name"
         placeholder="Name"
+        className='form-control'
         value={formData.name}
         onChange={handleChange}
       /><br></br>
@@ -60,6 +65,7 @@ function DonorSignUp() {
         type="email"
         name="email"
         placeholder="Email"
+        className='form-control'
         value={formData.email}
         onChange={handleChange}
       /><br></br>
@@ -68,6 +74,7 @@ function DonorSignUp() {
         type="password"
         name="password"
         placeholder="Password"
+        className='form-control'
         value={formData.password}
         onChange={handleChange}
       /><br></br>

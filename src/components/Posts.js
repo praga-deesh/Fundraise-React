@@ -137,7 +137,7 @@ const Posts = () => {
                 </p>
             )}
         </div>
-                  {post.status === 'incomplete' && <button className='button-group' onClick={() => handleDonate(post)}>Donate</button>}
+                  {post.status === 'incomplete' && new Date()<new Date(post.endDate) && <button className='button-group' onClick={() => handleDonate(post)}>Donate</button>}
                   <button className='button-group' onClick={() => handleViewDonationClick(post)}>View Donation Details</button>
                 </div>
               ))}
@@ -193,7 +193,7 @@ const Posts = () => {
                 </p>
             )}
         </div>
-            {post.status === 'incomplete' && <button className='button-group' onClick={redirectToDonorLogin} >Donate</button>}
+            {post.status === 'incomplete' && new Date()<new Date(post.endDate) && <button className='button-group' onClick={redirectToDonorLogin} >Donate</button>}
             <button className='button-group' onClick={() => handleViewDonationClick(post)}>View Donation Details</button>
           </div>
         ))}
