@@ -43,7 +43,9 @@ function DonorLogin() {
         id:data.id,
         name:data.name,
         email:data.email,
-        role:"donor"
+        role:"donor",
+        accountId:data.accountId,
+        accountBalance : data.accountBalance
       };
 
       sessionStorage.setItem("user", JSON.stringify(user));

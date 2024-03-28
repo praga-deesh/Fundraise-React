@@ -1,6 +1,7 @@
 import { useEffect,useState } from "react";
 import './Donate.css'
 import donateService from "../services/DonateService";
+import { useNavigate } from "react-router-dom";
 
 // const navigate = useNavigate();
 
@@ -10,6 +11,7 @@ import donateService from "../services/DonateService";
 function Donate() {
 
     //const donateService = new DonateService();
+    const navigate = new useNavigate();
 
     const[errorMessage,setErrorMessage] = useState("");
 
@@ -50,19 +52,19 @@ function Donate() {
       })
       useEffect(() => {
 
-        const sessionData = {
-          id : 2,
-          name: 'DonorOne',
-          email: 'd1@g.com',
-          role: 'donor',
-          password: 'd1d1d1',
-          accountId:'donor1@upi',
-          accountBalance:38000.0
-      };
-      const dataString = JSON.stringify(sessionData);
+  //       const sessionData = {
+  //         id : 2,
+  //         name: 'DonorOne',
+  //         email: 'd1@g.com',
+  //         role: 'donor',
+  //         password: 'd1d1d1',
+  //         accountId:'donor1@upi',
+  //         accountBalance:38000.0
+  //     };
+  //     const dataString = JSON.stringify(sessionData);
 
-  // Add data to sessionStorage
-  sessionStorage.setItem('user', dataString);
+  // // Add data to sessionStorage
+  // sessionStorage.setItem('user', dataString);
 
         const userData = JSON.parse(sessionStorage.getItem('user'));
       
@@ -100,6 +102,7 @@ function Donate() {
       }, []);
 
       useEffect(() => {
+        console.log(user.accountId + " " + user.accountBalance)
         if (user.accountId && post.donationAccountId) {
           setTransaction({
             senderId: user.accountId,
@@ -149,6 +152,7 @@ function Donate() {
             (resp)=>{
                console.log(resp);
                alert("donation Sucessfull");
+               navigate('/posts');
                donateService.addCommentt(commentt)
                .then(
                 (resp)=> {

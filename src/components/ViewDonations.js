@@ -34,7 +34,7 @@ const ViewDonations = () => {
 
 
   
-  <div>
+  <div style={{height: "90vh",overflow:"scroll"}}>
     <h3>Donations:</h3>
     <div className="parent-box">
       <div className="details-box">
